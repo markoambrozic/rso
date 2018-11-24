@@ -1,0 +1,1 @@
+This is an ecommerce plug & play scalability app
