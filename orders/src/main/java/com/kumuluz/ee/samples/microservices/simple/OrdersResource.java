@@ -20,18 +20,19 @@
 */
 package com.kumuluz.ee.samples.microservices.simple;
 
-import com.kumuluz.ee.samples.microservices.simple.models.Book;
 import com.kumuluz.ee.samples.microservices.simple.models.Order;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.*;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Tilen Faganel
@@ -48,6 +49,21 @@ public class OrdersResource {
 
     @Inject
     private OrdersProperties ordersProperties;
+
+    /**
+     * <p>Queries the database and returns a list of all books.</p>
+     *
+     * @return Response object containing the retrieved list of books from the database.
+     */
+    @GET
+    public Response getOrders() {
+
+        TypedQuery<Order> query = em.createNamedQuery("BookOrder.findAll", Order.class);
+
+        List<Order> orders = query.getResultList();
+
+        return Response.ok(orders).build();
+    }
 
     /**
      * <p>Queries the database and returns a specific order based on the given id.</p>
