@@ -10,7 +10,6 @@
 
     <packaging>pom</packaging>
     <modules>
-        <module>models</module>
         <module>catalog</module>
         <module>orders</module>
     </modules>
