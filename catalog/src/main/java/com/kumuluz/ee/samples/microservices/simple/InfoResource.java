@@ -39,18 +39,13 @@ public class InfoResource {
     @PersistenceContext
     private EntityManager em;
 
-    /**
-     * <p>Queries the database and returns a list of all books.</p>
-     *
-     * @return Response object containing the retrieved list of books from the database.
-     */
     @GET
     public Response getInfo() {
         JSONObject obj = new JSONObject();
 
         obj.put("clani", new String[] {"ma6794", "dm9929"});
         obj.put("opis_projekta", "Najin projekt implementita plug & play vtičnik za povečanje skalabilnosti in odpornosti na napake monolitnih ecommerce platform");
-        obj.put("mikrostoritve", new String[] {"http://13.81.31.49:8081/orders", "http://51.145.135.199:8080/books"});
+        obj.put("mikrostoritve", new String[] {"http://13.81.31.49:8081/orders", "http://51.145.135.199:8080/products"});
         obj.put("github", new String[] {"https://github.com/rso-team2/catalog", "https://github.com/rso-team2/orders"});
         obj.put("travis", new String[] {"https://travis-ci.com/markoambrozic/catalog", "https://travis-ci.com/markoambrozic/orders"});
         obj.put("dockerhub", new String[] {"https://hub.docker.com/r/markoambrozic/catalog/", "https://hub.docker.com/r/markoambrozic/orders/"});

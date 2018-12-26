@@ -20,7 +20,9 @@
 */
 package com.kumuluz.ee.samples.microservices.simple;
 
-import com.kumuluz.ee.samples.microservices.simple.models.Order;
+import com.kumuluz.ee.samples.microservices.simple.Models.Order;
+
+import org.json.JSONObject;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -50,11 +52,6 @@ public class OrdersResource {
     @Inject
     private OrdersProperties ordersProperties;
 
-    /**
-     * <p>Queries the database and returns a list of all books.</p>
-     *
-     * @return Response object containing the retrieved list of books from the database.
-     */
     @GET
     public Response getOrders() {
 
@@ -65,12 +62,6 @@ public class OrdersResource {
         return Response.ok(orders).build();
     }
 
-    /**
-     * <p>Queries the database and returns a specific order based on the given id.</p>
-     *
-     * @param id The id of the wanted book.
-     * @return Response object containing the requested book, or empty with the NOT_FOUND status.
-     */
     @GET
     @Path("/{id}")
     public Response getOrder(@PathParam("id") Integer id) {
@@ -83,16 +74,10 @@ public class OrdersResource {
         return Response.ok(o).build();
     }
 
-    /**
-     * <p>Creates the order for the provided book.</p>
-     *
-     * @param b The book object for which the order will be placed.
-     * @return Response object containing the created order.
-     */
     @POST
-    public Response placeOrder(Book b) {
+    public Response placeOrder(JSONObject orderJSON) {
 
-        if (b == null || b.getId() == null) {
+        /*if (b == null || b.getId() == null) {
             return Response.status(Response.Status.BAD_REQUEST).build();
         }
 
@@ -111,7 +96,10 @@ public class OrdersResource {
 
         em.persist(o);
 
-        em.getTransaction().commit();
+        em.getTransaction().commit();*/
+
+        Order o = new Order();
+        o.setOrderDate(new Date());
 
         return Response.status(Response.Status.CREATED).entity(o).build();
     }

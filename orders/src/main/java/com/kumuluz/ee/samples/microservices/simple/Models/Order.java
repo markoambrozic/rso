@@ -18,15 +18,11 @@
  *  software. See the License for the specific language governing permissions and
  *  limitations under the License.
 */
-package com.kumuluz.ee.samples.microservices.simple.models;
+package com.kumuluz.ee.samples.microservices.simple.Models;
 
 import javax.persistence.*;
 import java.util.Date;
 
-/**
- * @author Tilen Faganel
- * @since 2.3.0
- */
 @Entity
 @Table(name = "orders")
 @NamedQuery(name = "BookOrder.findAll", query = "SELECT o FROM Order o")
@@ -39,10 +35,8 @@ public class Order {
     @Temporal(TemporalType.TIMESTAMP)
     private Date orderDate;
 
-    @ManyToOne
-    @JoinColumn(name="book_id")
-    private Book book;
-
+    private String orderJSON;
+    
     public Integer getId() {
         return id;
     }
@@ -59,11 +53,12 @@ public class Order {
         this.orderDate = orderDate;
     }
 
-    public Book getBook() {
-        return book;
+
+    public String getOrderJSON() {
+        return orderJSON;
     }
 
-    public void setBook(Book book) {
-        this.book = book;
+    public void setOrderJSON(String orderJSON) {
+        this.orderJSON = orderJSON;
     }
 }
