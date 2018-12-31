@@ -12,6 +12,7 @@
     <modules>
         <module>catalog</module>
         <module>orders</module>
+        <module>cart</module>
     </modules>
 
     <properties>
