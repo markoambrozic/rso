@@ -15,6 +15,7 @@
         <module>cart</module>
         <module>dashboard</module>
         <module>emailing</module>
+        <module>journaling</module>
     </modules>
 
     <properties>
@@ -46,6 +47,11 @@
                 <groupId>org.postgresql</groupId>
                 <artifactId>postgresql</artifactId>
                 <version>${postgresql.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.kumuluz.ee.metrics</groupId>
+                <artifactId>kumuluzee-metrics-core</artifactId>
+                <version>${kumuluzee-metrics.version}</version>
             </dependency>
 
 
